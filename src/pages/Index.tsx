@@ -1,40 +1,46 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import MentoraLogo from "@/components/MentoraLogo";
+
 const Index = () => {
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    navigate("/login");
+  };
+
+  const handleCreateAccount = () => {
+    navigate("/signup");
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
+    <div className="min-h-screen bg-mentora-bg flex items-center justify-center px-6 py-12">
+      <div className="w-full max-w-sm">
+        {/* Logo */}
+        <MentoraLogo />
+
+        {/* Authentication Buttons */}
+        <div className="space-y-4">
+          {/* Sign In Button - Primary */}
+          <Button
+            onClick={handleSignIn}
+            className="w-full h-14 bg-mentora-blue hover:bg-blue-700 text-white font-medium text-lg rounded-xl shadow-sm transition-all duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98]"
+            size="lg"
           >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
+            Inicia sesión
+          </Button>
+
+          {/* Create Account Button - Secondary */}
+          <Button
+            onClick={handleCreateAccount}
+            variant="outline"
+            className="w-full h-14 bg-white border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700 font-medium text-lg rounded-xl shadow-sm transition-all duration-200 ease-in-out transform hover:scale-[1.02] active:scale-[0.98]"
+            size="lg"
+          >
+            Crea una cuenta
+          </Button>
+        </div>
       </div>
     </div>
   );
